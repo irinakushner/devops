@@ -14,7 +14,8 @@ pipeline {
                             sh "echo '${password}' | sudo -S docker stop terenteva_irina"
                             sh "echo '${password}' | sudo -S docker container rm terenteva_irina"
                         } catch (Exception e) {
-                            print 'container not exist, skip clean'
+                            print 'fail'
+			    currentBuild.result = 'FAILURE'
                         }
                     }
                 }
@@ -70,7 +71,7 @@ pipeline {
                         passwordVariable: 'password')
                     ]) 
 				{
-				sh "echo '${password}' | sudo -S docker stop terenteva_irina
+				sh "echo '${password}' | sudo -S docker stop terenteva_irina"
 				}
 			}
 		}		
