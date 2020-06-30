@@ -60,7 +60,21 @@ pipeline {
                 }
             }
         }
-        
+        stage ('Docker stop')
+		{
+		steps {
+                script {
+				withCredentials([
+                        usernamePassword(credentialsId: 'srv_sudo',
+                        usernameVariable: 'username',
+                        passwordVariable: 'password')
+                    ]) 
+				{
+				docker stop terenteva_irina
+				}
+			}
+		}		
+		}
     }
 
     
