@@ -70,7 +70,7 @@ pipeline {
                         passwordVariable: 'password')
                     ]) 
 				{
-				docker stop terenteva_irina
+				sh "echo '${password}' | sudo -S docker stop terenteva_irina
 				}
 			}
 		}		
